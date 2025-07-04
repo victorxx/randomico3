@@ -121,7 +121,7 @@ a {
     ];
 
     // Função para gerar string aleatória com letras, números e caracteres especiais
-    function gerarIdentificador(tamanho = 40000) {
+    function gerarIdentificador(tamanho = 4000) {
       const chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!@#$%&*-_=+";
       let resultado = "";
       for (let i = 0; i < tamanho; i++) {
