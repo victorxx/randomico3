@@ -26,7 +26,8 @@
             color: #004aad;
         }
         ul {
-            list-style-type: ✅;
+            list-style-type: "✅ ";
+            padding-left: 20px;
         }
         .highlight {
             background-color: #e0f7fa;
@@ -58,7 +59,7 @@
 <header>
     <h1>🚗 Quer comprar seu carro sem pagar juros?</h1>
     <h2>Tem um jeito inteligente: Consórcio!</h2>
-    <p><strong>Data:</strong> 04 de julho de 2025</p>
+    <p><strong>Data:</strong> <span id="data-hoje"></span></p>
 </header>
 
 <section>
@@ -87,8 +88,29 @@
 </section>
 
 <footer>
-    <p class="unique-code">ID ÚNICO DA CAMPANHA: GCBNK-VT-7425-CR001</p>
+    <p class="unique-code" id="campanha-id">ID ÚNICO DA CAMPANHA:</p>
 </footer>
+
+<script>
+    // Define data atual formatada
+    const hoje = new Date();
+    const opcoesData = { day: '2-digit', month: 'long', year: 'numeric' };
+    document.getElementById("data-hoje").textContent = hoje.toLocaleDateString('pt-BR', opcoesData);
+
+    // Gera ID de campanha único
+    function gerarIdCampanha() {
+        const ano = hoje.getFullYear().toString().slice(-2);
+        const mes = (hoje.getMonth() + 1).toString().padStart(2, '0');
+        const dia = hoje.getDate().toString().padStart(2, '0');
+        const letras = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+        const letra1 = letras[Math.floor(Math.random() * letras.length)];
+        const letra2 = letras[Math.floor(Math.random() * letras.length)];
+        const numero = Math.floor(100 + Math.random() * 900); // 3 dígitos
+        return `GCBNK-VT-${dia}${mes}${ano}-${letra1}${letra2}${numero}`;
+    }
+
+    document.getElementById("campanha-id").textContent += " " + gerarIdCampanha();
+</script>
 
 </body>
 </html>
